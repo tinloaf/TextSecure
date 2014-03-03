@@ -3,7 +3,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:title="@string/push_directory__menu_refresh"
           android:id="@+id/menu_refresh_directory"
-          android:icon="@drawable/refresh"
+          android:icon="?menu_refresh_directory"
           android:showAsAction="ifRoom"
         />
 </menu>
