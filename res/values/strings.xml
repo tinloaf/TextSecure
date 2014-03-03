@@ -740,6 +740,9 @@
     <!-- contact_selection -->
     <string name="contact_selection__menu_finished">Finished</string>
 
+    <!-- refreshing push directory from menu -->
+    <string name="push_directory__menu_refresh">Refresh Contact List</string>
+
     <!-- conversation_button_context -->
     <string name="conversation_button_context__menu_send_unencrypted">Send unencrypted</string>
 
