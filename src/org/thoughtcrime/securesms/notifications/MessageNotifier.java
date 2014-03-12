@@ -19,6 +19,8 @@ package org.thoughtcrime.securesms.notifications;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.appwidget.AppWidgetManager;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -41,6 +43,7 @@ import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.RoutingActivity;
 import org.thoughtcrime.securesms.contacts.ContactPhotoFactory;
 import org.thoughtcrime.securesms.database.PushDatabase;
+import org.thoughtcrime.securesms.providers.TextSecureAppWidgetProvider;
 import org.thoughtcrime.securesms.recipients.RecipientFactory;
 import org.thoughtcrime.securesms.recipients.RecipientFormattingException;
 import org.whispersystems.textsecure.crypto.MasterSecret;
@@ -98,7 +101,6 @@ public class MessageNotifier {
     }
   }
 
-
   public static void updateNotification(Context context, MasterSecret masterSecret) {
     if (!TextSecurePreferences.isNotificationsEnabled(context)) {
       return;
@@ -120,9 +122,12 @@ public class MessageNotifier {
     }
   }
 
+
   private static void updateNotification(Context context, MasterSecret masterSecret, boolean signal) {
     Cursor telcoCursor = null;
     Cursor pushCursor  = null;
+
+    TextSecureAppWidgetProvider.triggerUpdate(context);
 
     try {
       telcoCursor = DatabaseFactory.getMmsSmsDatabase(context).getUnread();
