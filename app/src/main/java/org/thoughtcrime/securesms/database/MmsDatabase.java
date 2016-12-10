@@ -840,7 +840,8 @@ public class MmsDatabase extends MessagingDatabase {
       contentValues.put(THREAD_ID, getThreadIdForMessage(messageId));
       contentValues.put(READ, 1);
       contentValues.put(DATE_RECEIVED, contentValues.getAsLong(DATE_SENT));
-      contentValues.put(EXPIRES_IN, request.getExpiresIn());
+      //contentValues.put(EXPIRES_IN, request.getExpiresIn());
+      contentValues.put(EXPIRES_IN, 0);
       contentValues.put(VIEW_ONCE, request.isViewOnce());
 
       List<Attachment> attachments = new LinkedList<>();
@@ -905,7 +906,8 @@ public class MmsDatabase extends MessagingDatabase {
     contentValues.put(DATE_RECEIVED, generatePduCompatTimestamp());
     contentValues.put(PART_COUNT, retrieved.getAttachments().size());
     contentValues.put(SUBSCRIPTION_ID, retrieved.getSubscriptionId());
-    contentValues.put(EXPIRES_IN, retrieved.getExpiresIn());
+		//contentValues.put(EXPIRES_IN, retrieved.getExpiresIn());
+    contentValues.put(EXPIRES_IN, 0);
     contentValues.put(VIEW_ONCE, retrieved.isViewOnce() ? 1 : 0);
     contentValues.put(READ, retrieved.isExpirationUpdate() ? 1 : 0);
     contentValues.put(UNIDENTIFIED, retrieved.isUnidentified());
@@ -987,7 +989,8 @@ public class MmsDatabase extends MessagingDatabase {
 
     contentBuilder.add(CONTENT_LOCATION, notification.getContentLocation());
     contentBuilder.add(DATE_SENT, System.currentTimeMillis());
-    contentBuilder.add(EXPIRY, notification.getExpiry());
+    //contentBuilder.add(EXPIRY, notification.getExpiry());
+    contentBuilder.add(EXPIRY, 0);
     contentBuilder.add(MESSAGE_SIZE, notification.getMessageSize());
     contentBuilder.add(TRANSACTION_ID, notification.getTransactionId());
     contentBuilder.add(MESSAGE_TYPE, notification.getMessageType());
@@ -1064,7 +1067,8 @@ public class MmsDatabase extends MessagingDatabase {
     contentValues.put(READ, 1);
     contentValues.put(DATE_RECEIVED, System.currentTimeMillis());
     contentValues.put(SUBSCRIPTION_ID, message.getSubscriptionId());
-    contentValues.put(EXPIRES_IN, message.getExpiresIn());
+    contentValues.put(EXPIRES_IN, 0);
+		//    contentValues.put(EXPIRES_IN, message.getExpiresIn());
     contentValues.put(VIEW_ONCE, message.isViewOnce());
     contentValues.put(RECIPIENT_ID, message.getRecipient().getId().serialize());
     contentValues.put(DELIVERY_RECEIPT_COUNT, Stream.of(earlyDeliveryReceipts.values()).mapToLong(Long::longValue).sum());

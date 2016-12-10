@@ -510,7 +510,7 @@ public class SmsDatabase extends MessagingDatabase {
       contentValues.put(READ, 0);
       contentValues.put(BODY, record.getBody());
       contentValues.put(THREAD_ID, record.getThreadId());
-      contentValues.put(EXPIRES_IN, record.getExpiresIn());
+      contentValues.put(EXPIRES_IN, 0);
 
       SQLiteDatabase db           = databaseHelper.getWritableDatabase();
       long           newMessageId = db.insert(TABLE_NAME, null, contentValues);
@@ -630,7 +630,7 @@ public class SmsDatabase extends MessagingDatabase {
     values.put(PROTOCOL, message.getProtocol());
     values.put(READ, unread ? 0 : 1);
     values.put(SUBSCRIPTION_ID, message.getSubscriptionId());
-    values.put(EXPIRES_IN, message.getExpiresIn());
+    values.put(EXPIRES_IN, 0);
     values.put(UNIDENTIFIED, message.isUnidentified());
 
     if (!TextUtils.isEmpty(message.getPseudoSubject()))
@@ -701,7 +701,7 @@ public class SmsDatabase extends MessagingDatabase {
     contentValues.put(READ, 1);
     contentValues.put(TYPE, type);
     contentValues.put(SUBSCRIPTION_ID, message.getSubscriptionId());
-    contentValues.put(EXPIRES_IN, message.getExpiresIn());
+    contentValues.put(EXPIRES_IN, 0);
     contentValues.put(DELIVERY_RECEIPT_COUNT, Stream.of(earlyDeliveryReceipts.values()).mapToLong(Long::longValue).sum());
     contentValues.put(READ_RECEIPT_COUNT, Stream.of(earlyReadReceipts.values()).mapToLong(Long::longValue).sum());
 
