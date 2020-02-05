@@ -842,7 +842,8 @@ public class MmsDatabase extends MessagingDatabase {
       contentValues.put(DATE_RECEIVED, contentValues.getAsLong(DATE_SENT));
       //contentValues.put(EXPIRES_IN, request.getExpiresIn());
       contentValues.put(EXPIRES_IN, 0);
-      contentValues.put(VIEW_ONCE, request.isViewOnce());
+      //contentValues.put(VIEW_ONCE, request.isViewOnce());
+			contentValues.put(VIEW_ONCE, false);
 
       List<Attachment> attachments = new LinkedList<>();
 
@@ -908,7 +909,8 @@ public class MmsDatabase extends MessagingDatabase {
     contentValues.put(SUBSCRIPTION_ID, retrieved.getSubscriptionId());
 		//contentValues.put(EXPIRES_IN, retrieved.getExpiresIn());
     contentValues.put(EXPIRES_IN, 0);
-    contentValues.put(VIEW_ONCE, retrieved.isViewOnce() ? 1 : 0);
+		//contentValues.put(VIEW_ONCE, retrieved.isViewOnce() ? 1 : 0);
+		contentValues.put(VIEW_ONCE, 0);
     contentValues.put(READ, retrieved.isExpirationUpdate() ? 1 : 0);
     contentValues.put(UNIDENTIFIED, retrieved.isUnidentified());
 
@@ -1067,9 +1069,10 @@ public class MmsDatabase extends MessagingDatabase {
     contentValues.put(READ, 1);
     contentValues.put(DATE_RECEIVED, System.currentTimeMillis());
     contentValues.put(SUBSCRIPTION_ID, message.getSubscriptionId());
+		//contentValues.put(EXPIRES_IN, message.getExpiresIn());
     contentValues.put(EXPIRES_IN, 0);
-		//    contentValues.put(EXPIRES_IN, message.getExpiresIn());
-    contentValues.put(VIEW_ONCE, message.isViewOnce());
+    //contentValues.put(VIEW_ONCE, message.isViewOnce());
+    contentValues.put(VIEW_ONCE, false);
     contentValues.put(RECIPIENT_ID, message.getRecipient().getId().serialize());
     contentValues.put(DELIVERY_RECEIPT_COUNT, Stream.of(earlyDeliveryReceipts.values()).mapToLong(Long::longValue).sum());
     contentValues.put(READ_RECEIPT_COUNT, Stream.of(earlyReadReceipts.values()).mapToLong(Long::longValue).sum());

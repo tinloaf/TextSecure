@@ -356,6 +356,7 @@ public class AttachmentDatabase extends Database {
   public void deleteAttachmentFilesForViewOnceMessage(long mmsId) {
     Log.d(TAG, "[deleteAttachmentFilesForViewOnceMessage] mmsId: " + mmsId);
 
+		/*
     SQLiteDatabase database = databaseHelper.getWritableDatabase();
     Cursor cursor           = null;
 
@@ -397,6 +398,7 @@ public class AttachmentDatabase extends Database {
     if (threadId > 0) {
       notifyConversationListeners(threadId);
     }
+		*/
   }
 
   public void deleteAttachment(@NonNull AttachmentId id) {

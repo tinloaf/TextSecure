@@ -738,6 +738,7 @@ public final class PushProcessMessageJob extends BaseJob {
   }
 
   private void handleSynchronizeViewOnceOpenMessage(@NonNull ViewOnceOpenMessage openMessage, long envelopeTimestamp) {
+		/*
     RecipientId   author    = Recipient.externalPush(context, openMessage.getSender()).getId();
     long          timestamp = openMessage.getTimestamp();
     MessageRecord record    = DatabaseFactory.getMmsSmsDatabase(context).getMessageFor(timestamp, author);
@@ -749,6 +750,7 @@ public final class PushProcessMessageJob extends BaseJob {
     MessageNotifier.setLastDesktopActivityTimestamp(envelopeTimestamp);
     MessageNotifier.cancelDelayedNotifications();
     MessageNotifier.updateNotification(context);
+		*/
   }
 
   private void handleMediaMessage(@NonNull SignalServiceContent content,
